@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="jjitalaS6.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>
