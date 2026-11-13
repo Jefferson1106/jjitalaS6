@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="jjitalaS6.Views.vActualizarEliminar"
+             Title="Actualizar o eliminar" BackgroundColor="{StaticResource StudentBackground}">
+    <ScrollView><VerticalStackLayout Padding="20" Spacing="15">
+        <Label TextColor="{StaticResource StudentText}" 
+            Text="ACTUALIZAR - ELIMINAR ESTUDIANTE"
+            FontSize="20"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label TextColor="{StaticResource StudentText}" Text="CODIGO"
+                   Grid.Row="0"
+                   Grid.Column="0"/>
+            <Entry BackgroundColor="{StaticResource StudentSurface}" TextColor="{StaticResource StudentText}" PlaceholderColor="{StaticResource StudentMuted}" x:Name="txtCodigo"
+                   IsEnabled="False"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   />
+            <Label TextColor="{StaticResource StudentText}" Text="NOMBRE"
+                   Grid.Row="1"
+                   Grid.Column="0"/>    
+            <Entry BackgroundColor="{StaticResource StudentSurface}" TextColor="{StaticResource StudentText}" PlaceholderColor="{StaticResource StudentMuted}" x:Name="txtNombre"
+                   Grid.Row="1"
+                   Grid.Column="1"
+             />
+
+            <Label TextColor="{StaticResource StudentText}" Text="APELLIDO"
+                   Grid.Row="2"
+                   Grid.Column="0"/>    
+            <Entry BackgroundColor="{StaticResource StudentSurface}" TextColor="{StaticResource StudentText}" PlaceholderColor="{StaticResource StudentMuted}" x:Name="txtApellido"
+                   Grid.Row="2"
+                   Grid.Column="1"
+            />
+            <Label TextColor="{StaticResource StudentText}" Text="EDAD"
+                   Grid.Row="3"
+                   Grid.Column="0"/>
+            <Entry BackgroundColor="{StaticResource StudentSurface}" TextColor="{StaticResource StudentText}" PlaceholderColor="{StaticResource StudentMuted}" x:Name="txtEdad" Keyboard="Numeric"
+                   Grid.Row="3"
+                   Grid.Column="1"
+            />
+        </Grid>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnActualizar"
+                    Text="Actualizar" BackgroundColor="{StaticResource Primary}" TextColor="White" CornerRadius="8"
+                    Clicked="btnActualizar_Clicked"
+                    Grid.Row="0"
+                    Grid.Column="0"      
+            />
+
+            <Button x:Name="btnEliminar"
+                    Text="Eliminar" BackgroundColor="{StaticResource StudentDanger}" TextColor="White" CornerRadius="8"
+                    Clicked="btnEliminar_Clicked"
+                    Grid.Row="0"
+                    Grid.Column="1"      
+            />
+
+        </Grid>
+    </VerticalStackLayout></ScrollView>
+</ContentPage>

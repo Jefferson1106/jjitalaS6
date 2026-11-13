@@ -1,102 +1,145 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="jjitalaS6.Views.vEstudiante">
-    <VerticalStackLayout Padding="15">
 
-        <Label Text="Lista de Estudiantes"
-           FontSize="22"
-           FontAttributes="Bold"
-           TextColor="#1E3A8A"
-           HorizontalOptions="Center"
-           Margin="0,0,0,10"/>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="jjitalaS6.Views.vEstudiante"
+    Title="Estudiantes"
+    BackgroundColor="{StaticResource StudentBackground}">
 
-        <!-- Cabecera -->
-        <Grid BackgroundColor="#2563EB"
-          Padding="8"
-          ColumnSpacing="2">
+    <Grid Padding="20"
+          RowDefinitions="Auto,Auto,Auto,*"
+          RowSpacing="15">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="70"/>
-                <ColumnDefinition Width="120"/>
-                <ColumnDefinition Width="120"/>
-                <ColumnDefinition Width="70"/>
-            </Grid.ColumnDefinitions>
+        <!-- Título principal -->
+        <Label
+            Grid.Row="0"
+            Text="Semana 6: Servicios web - Estudiantes"
+            FontSize="22"
+            FontAttributes="Bold"
+            TextColor="{StaticResource StudentText}"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"/>
 
-            <Label Text="Código"
-               TextColor="White"
-               FontAttributes="Bold"
-               HorizontalTextAlignment="Center"
-               Grid.Column="0"/>
+        <!-- Botón para agregar estudiante -->
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*,Auto">
 
-            <Label Text="Nombre"
-               TextColor="White"
-               FontAttributes="Bold"
-               HorizontalTextAlignment="Center"
-               Grid.Column="1"/>
+            <Label
+                Grid.Column="0"
+                Text="Listado de estudiantes"
+                FontSize="17"
+                FontAttributes="Bold"
+                TextColor="{StaticResource StudentText}"
+                VerticalOptions="Center"/>
 
-            <Label Text="Apellido"
-               TextColor="White"
-               FontAttributes="Bold"
-               HorizontalTextAlignment="Center"
-               Grid.Column="2"/>
+            <Button
+                Grid.Column="1"
+                x:Name="btnAgregar"
+                Text="+ Agregar estudiante"
+                BackgroundColor="{StaticResource Primary}"
+                TextColor="White"
+                FontSize="14"
+                FontAttributes="Bold"
+                CornerRadius="8"
+                Padding="16,12"
+                Clicked="btnAgregar_Clicked"/>
 
-            <Label Text="Edad"
-               TextColor="White"
-               FontAttributes="Bold"
-               HorizontalTextAlignment="Center"
-               Grid.Column="3"/>
         </Grid>
 
-        <ListView x:Name="listaEstudiante"
-              HasUnevenRows="True"
-              SeparatorVisibility="Default">
+        <!-- Encabezado de tabla -->
+        <Border
+            Grid.Row="2"
+            BackgroundColor="{StaticResource Tertiary}"
+            StrokeThickness="0"
+            StrokeShape="RoundRectangle 8"
+            Padding="15">
 
-            <ListView.ItemTemplate>
+            <Grid ColumnDefinitions="*,*,70"
+                  ColumnSpacing="10">
+
+                <Label
+                    Grid.Column="0"
+                    Text="NOMBRE"
+                    FontSize="15"
+                    FontAttributes="Bold"
+                    TextColor="White"/>
+
+                <Label
+                    Grid.Column="1"
+                    Text="APELLIDO"
+                    FontSize="15"
+                    FontAttributes="Bold"
+                    TextColor="White"/>
+                <Label
+                    Grid.Column="2"
+                    Text="EDAD"
+                    FontSize="15"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    HorizontalTextAlignment="Center"/>
+
+            </Grid>
+        </Border>
+
+        <!-- Lista de estudiantes -->
+        <CollectionView
+            Grid.Row="3"
+            x:Name="listaEstudiante"
+            SelectionMode="Single"
+            SelectionChanged="listaEstudiante_SelectionChanged">
+
+            <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
 
-                        <Frame Margin="0,2"
-                           Padding="5"
-                           BorderColor="#D1D5DB"
-                           CornerRadius="8"
-                           HasShadow="False">
+                    <Border
+                        BackgroundColor="{StaticResource StudentSurface}"
+                        Stroke="{StaticResource StudentBorder}"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 5"
+                        Margin="0,2"
+                        Padding="15">
 
-                            <Grid ColumnSpacing="2">
+                        <Grid ColumnDefinitions="*,*,70"
+                              ColumnSpacing="10">
 
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="70"/>
-                                    <ColumnDefinition Width="120"/>
-                                    <ColumnDefinition Width="120"/>
-                                    <ColumnDefinition Width="70"/>
-                                </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Column="0"
+                                Text="{Binding nombre}"
+                                FontSize="15"
+                                TextColor="{StaticResource StudentText}"
+                                VerticalOptions="Center"/>
 
-                                <Label Text="{Binding codigo}"
-                                   FontAttributes="Bold"
-                                   HorizontalTextAlignment="Center"
-                                   Grid.Column="0"/>
+                            <Label
+                                Grid.Column="1"
+                                Text="{Binding apellido}"
+                                FontSize="15"
+                                TextColor="{StaticResource StudentMuted}"
+                                VerticalOptions="Center"/>
+                            <Label
+                                Grid.Column="2"
+                                Text="{Binding edad}"
+                                FontSize="15"
+                                TextColor="{StaticResource StudentText}"
+                                HorizontalTextAlignment="Center"
+                                VerticalOptions="Center"/>
 
-                                <Label Text="{Binding nombre}"
-                                   HorizontalTextAlignment="Center"
-                                   Grid.Column="1"/>
+                        </Grid>
 
-                                <Label Text="{Binding apellido}"
-                                   HorizontalTextAlignment="Center"
-                                   Grid.Column="2"/>
+                    </Border>
 
-                                <Label Text="{Binding edad}"
-                                   HorizontalTextAlignment="Center"
-                                   Grid.Column="3"/>
-
-                            </Grid>
-
-                        </Frame>
-
-                    </ViewCell>
                 </DataTemplate>
-            </ListView.ItemTemplate>
+            </CollectionView.ItemTemplate>
 
-        </ListView>
+            <CollectionView.EmptyView>
+                <Label
+                    Text="No hay estudiantes registrados."
+                    TextColor="{StaticResource StudentMuted}"
+                    HorizontalOptions="Center"
+                    Margin="0,20"/>
+            </CollectionView.EmptyView>
 
-    </VerticalStackLayout>
-</ContentView>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>
